@@ -1,5 +1,6 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import healthRouter from './routes/health';
+import infoRouter from './routes/info';
 
 const app: Application = express();
 
@@ -7,7 +8,8 @@ const app: Application = express();
 app.use(express.json());
 
 // ── Routes ────────────────────────────────────────────────────────────────────
-app.use('/health', healthRouter);
+app.use('/api/v1/health', healthRouter);
+app.use('/api/v1/info', infoRouter);
 
 // ── 404 handler ───────────────────────────────────────────────────────────────
 app.use((_req: Request, res: Response): void => {
